@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/alarm">
+
+    <fragment
+        android:id="@+id/alarm"
+        android:name="com.example.mobile.alarm.Alarm"
+        android:label="Alarm"
+        tools:layout="@layout/alarm"/>
+
+    <fragment
+        android:id="@+id/world_clock"
+        android:name="com.example.mobile.worldclock.WorldClock"
+        android:label="world clock"
+        tools:layout="@layout/world_clock"/>
+</navigation>

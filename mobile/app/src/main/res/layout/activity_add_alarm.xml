@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    tools:context=".alarm.AddAlarm">
+
+    <DatePicker
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:datePickerMode="spinner"
+        android:calendarViewShown="false"
+        android:id="@+id/datePicker"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/alarm_background"
+        android:layout_above="@+id/linearLayout"
+        android:layout_below="@+id/datePicker">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:orientation="vertical">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentLeft="true"
+                    android:gravity="center_vertical"
+                    android:id="@+id/today"/>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:layout_alignParentRight="true">
+                    <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/ic_action_calendar"/>
+                </LinearLayout>
+            </RelativeLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:orientation="horizontal">
+                <TextView
+                    style="@style/day_list"
+                    android:text="일"
+                    android:textColor="@color/red"/>
+                <TextView
+                    style="@style/day_list"
+                    android:text="월"/>
+                <TextView
+                    style="@style/day_list"
+                    android:text="화"/>
+                <TextView
+                    style="@style/day_list"
+                    android:text="수"/>
+                <TextView
+                    style="@style/day_list"
+                    android:text="목"/>
+                <TextView
+                    style="@style/day_list"
+                    android:text="금"/>
+                <TextView
+                    style="@style/day_list"
+                    android:textColor="@color/skyblue"
+                    android:text="토"/>
+            </LinearLayout>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:hint="알람 이름"/>
+<!--    밑에 버튼으로 바꾸기-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginBottom="10dp">
+                <TextView
+                    style="@style/alarm_setting_title"
+                    android:text="알람음"
+                    android:id="@+id/alarm_song"/>
+                <TextView
+                    style="@style/alarm_setting_minititle"
+                    android:layout_below="@+id/alarm_song"
+                    android:id="@+id/alarm_song2"
+                    android:text="기본음"/>
+                <Switch
+                    style="@style/alarm_setting_switch"
+                    android:id="@+id/alarm_song_switch"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginBottom="10dp">
+                <TextView
+                    style="@style/alarm_setting_title"
+                    android:text="다시 울림"
+                    android:id="@+id/repeat"/>
+                <TextView
+                    style="@style/alarm_setting_minititle"
+                    android:layout_below="@+id/repeat"
+                    android:id="@+id/repeat2"
+                    android:text="기본음"/>
+                <Switch
+                    style="@style/alarm_setting_switch"
+                    android:id="@+id/repeat_switch"/>
+            </RelativeLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:id="@+id/linearLayout"
+        android:layout_alignParentBottom="true">
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:text="취소"
+            android:id="@+id/cancel"
+            android:textColor="@color/add_alarm"/>
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:text="저장"
+            android:id="@+id/save"
+            android:textColor="@color/add_alarm"/>
+
+    </LinearLayout>
+</RelativeLayout>
