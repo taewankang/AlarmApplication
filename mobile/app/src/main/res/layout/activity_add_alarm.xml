@@ -44,6 +44,7 @@
                     <ImageButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:onClick="Dialog_calendar"
                         android:background="@drawable/ic_action_calendar"/>
                 </LinearLayout>
             </RelativeLayout>
@@ -51,41 +52,98 @@
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:orientation="horizontal">
-                <TextView
+                <FrameLayout
+                    android:onClick="click_sunday"
+                    style="@style/day_list_frameLayout"
+                    android:gravity="center">
+                    <ImageView
+                        android:id="@+id/sunday_imageView"
+                        style="@style/day_list_imageView"/>
+                    <TextView
+                        style="@style/day_list"
+                        android:text="일"
+                        android:id="@+id/sunday"
+                        android:textColor="@color/red"/>
+                </FrameLayout>
+                <FrameLayout
+                    android:onClick="click_monday"
+                    style="@style/day_list_frameLayout">
+                    <ImageView
+                        android:id="@+id/monday_imageView"
+                        style="@style/day_list_imageView"/>
+                    <TextView
+                        style="@style/day_list"
+                        android:id="@+id/monday"
+                        android:text="월"/>
+                </FrameLayout>
+                <FrameLayout
+                    android:onClick="click_tuesday"
+                    style="@style/day_list_frameLayout">
+                    <ImageView
+                        android:id="@+id/tuesday_imageView"
+                        style="@style/day_list_imageView"/>
+                    <TextView
+                        style="@style/day_list"
+                        android:id="@+id/tuesday"
+                        android:text="화"/>
+                </FrameLayout>
+                <FrameLayout
+                    android:onClick="click_wednesday"
+                    style="@style/day_list_frameLayout">
+                    <ImageView
+                        android:id="@+id/wednesday_imageView"
+                        style="@style/day_list_imageView"/>
+                 <TextView
                     style="@style/day_list"
-                    android:text="일"
-                    android:textColor="@color/red"/>
-                <TextView
-                    style="@style/day_list"
-                    android:text="월"/>
-                <TextView
-                    style="@style/day_list"
-                    android:text="화"/>
-                <TextView
-                    style="@style/day_list"
+                    android:id="@+id/wednesday"
                     android:text="수"/>
-                <TextView
-                    style="@style/day_list"
-                    android:text="목"/>
-                <TextView
-                    style="@style/day_list"
-                    android:text="금"/>
-                <TextView
-                    style="@style/day_list"
-                    android:textColor="@color/skyblue"
-                    android:text="토"/>
+                </FrameLayout>
+                <FrameLayout
+                    android:onClick="click_thursday"
+                    style="@style/day_list_frameLayout">
+                    <ImageView
+                        android:id="@+id/thursday_imageView"
+                        style="@style/day_list_imageView"/>
+                    <TextView
+                        style="@style/day_list"
+                        android:id="@+id/thursday"
+                        android:text="목"/>
+                </FrameLayout>
+                <FrameLayout
+                    android:onClick="click_friday"
+                    style="@style/day_list_frameLayout">
+                    <ImageView
+                        android:id="@+id/friday_imageView"
+                        style="@style/day_list_imageView"/>
+                    <TextView
+                        style="@style/day_list"
+                        android:id="@+id/friday"
+                        android:text="금"/>
+                </FrameLayout>
+                <FrameLayout
+                    android:onClick="click_saturday"
+                    style="@style/day_list_frameLayout">
+                    <ImageView
+                        android:id="@+id/saturday_imageView"
+                        style="@style/day_list_imageView"/>
+                    <TextView
+                        style="@style/day_list"
+                        android:id="@+id/saturday"
+                        android:text="토"/>
+                </FrameLayout>
             </LinearLayout>
 
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
+                android:layout_marginBottom="20dp"
+                android:singleLine="true"
                 android:hint="알람 이름"/>
 <!--    밑에 버튼으로 바꾸기-->
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:layout_marginBottom="10dp">
+                android:layout_marginBottom="20dp">
                 <TextView
                     style="@style/alarm_setting_title"
                     android:text="알람음"
@@ -103,7 +161,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:layout_marginBottom="10dp">
+                android:layout_marginBottom="20dp">
                 <TextView
                     style="@style/alarm_setting_title"
                     android:text="다시 울림"
@@ -112,7 +170,7 @@
                     style="@style/alarm_setting_minititle"
                     android:layout_below="@+id/repeat"
                     android:id="@+id/repeat2"
-                    android:text="기본음"/>
+                    android:text="없음"/>
                 <Switch
                     style="@style/alarm_setting_switch"
                     android:id="@+id/repeat_switch"/>
@@ -132,7 +190,7 @@
             android:layout_height="50dp"
             android:layout_weight="1"
             android:text="취소"
-            android:id="@+id/cancel"
+            android:onClick="cancel"
             android:textColor="@color/add_alarm"/>
 
         <Button
@@ -140,8 +198,7 @@
             android:layout_height="50dp"
             android:layout_weight="1"
             android:text="저장"
-            android:id="@+id/save"
+            android:onClick="save"
             android:textColor="@color/add_alarm"/>
-
     </LinearLayout>
 </RelativeLayout>

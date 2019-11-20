@@ -7,12 +7,27 @@
         <item name="colorPrimaryDark">@color/background</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+
     <style name="day_list">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:textSize">10dp</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="day_list_imageView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:visibility">invisible</item>
+        <item name="android:src">@drawable/add_alarm_selected_day</item>
+    </style>
+
+    <style name="day_list_frameLayout">
         <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">match_parent</item>
         <item name="android:layout_weight">1</item>
-        <item name="android:gravity">center</item>
     </style>
+
     <style name="alarm_setting_title">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
@@ -20,12 +35,14 @@
         <item name="android:layout_alignParentTop">true</item>
         <item name="android:layout_alignParentLeft">true</item>
     </style>
+
     <style name="alarm_setting_minititle">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textColor">@color/skyblue</item>
         <item name="android:textSize">10dp</item>
     </style>
+
     <style name="alarm_setting_switch">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">match_parent</item>
