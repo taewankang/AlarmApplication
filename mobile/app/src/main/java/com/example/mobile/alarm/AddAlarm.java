@@ -12,6 +12,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.NumberPicker;
 import android.widget.TextView;
@@ -36,6 +37,7 @@ public class AddAlarm extends AppCompatActivity {
     String[] minute_arr =new String[60];     //분에 들어갈 데이터
     NumberPicker noon, hour, minute;        //NumberPicker에서 선택된 오전.후, 시간, 분
     int inoon = 0, ihour = 1, iminute = 0;
+    EditText memo;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,6 +56,7 @@ public class AddAlarm extends AppCompatActivity {
         current_day = localDate.getDayOfMonth();
         today_text = "오늘-" + current_month + "월 " + current_day + "일";
         today.setText(today_text);
+        memo = (EditText)findViewById(R.id.memo);
 
         noon = (NumberPicker)findViewById(R.id.noon);
         hour = (NumberPicker)findViewById(R.id.hour);
@@ -170,6 +173,8 @@ public class AddAlarm extends AppCompatActivity {
         intent.putExtra("noon", inoon);
         intent.putExtra("hour", ihour);
         intent.putExtra("minute", iminute);
+        intent.putExtra("memo", memo.getText().toString());
+        intent.putExtra("today", today.getText().toString());
         setResult(RESULT_OK, intent);
         finish();
     }

@@ -1,13 +1,22 @@
 package com.example.mobile;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+
+import java.util.zip.Inflater;
 
 public class AlarmList extends AppCompatActivity {
     @Override
-    public void onCreate(Bundle savedInstanceState){
-        super.onCreate(savedInstanceState);
+    public void onCreate(Bundle onInstanceState){
+        super.onCreate(onInstanceState);
         setContentView(R.layout.alarm_list);
+
     }
 }

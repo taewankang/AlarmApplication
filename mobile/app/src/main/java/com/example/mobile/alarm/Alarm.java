@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,10 +17,7 @@ import com.example.mobile.R;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.zip.Inflater;
-
 import static android.view.View.GONE;
-import static android.view.View.TEXT_ALIGNMENT_CENTER;
 import static android.view.View.VISIBLE;
 import static android.view.View.inflate;
 
@@ -76,7 +74,6 @@ public class Alarm extends Fragment {
             add.setVisibility(VISIBLE);
 //            add_button_linearLayout.setVisibility(GONE);
         }
-        Log.d("superdroid", "onStart");
     }
 
     public void addAlarm(){
@@ -93,13 +90,16 @@ public class Alarm extends Fragment {
             int noon = data.getIntExtra("noon", 0);
             int hour = data.getIntExtra("hour", 0);
             int min = data.getIntExtra("minute", 0);
-            add_list(noon, hour, min, "memo", "today");
+            String memo = data.getStringExtra("memo");
+            String today = data.getStringExtra("today");
+            add_list(noon, hour, min, memo, today);
             add.setVisibility(VISIBLE);
         }
     }
 
     public void add_list(int noon, int hour, int min, String memo, String date){
         LayoutInflater layoutInflater = LayoutInflater.from(context);
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 200);
         view2 = layoutInflater.inflate(R.layout.alarm_list, null, false);
         TextView alarm_list_time = (TextView)view2.findViewById(R.id.time);
         TextView alarm_list_noon = (TextView)view2.findViewById(R.id.noon);
@@ -112,6 +112,14 @@ public class Alarm extends Fragment {
         alarm_list_time.setText(hour + " : " + min);
         alarm_list_memo.setText(memo);
         alarm_list_date.setText(date);
+
+        alarm_list_time.setGravity(Gravity.CENTER_VERTICAL);
+        alarm_list_noon.setGravity(Gravity.CENTER_VERTICAL);
+        alarm_list_memo.setGravity(Gravity.CENTER_VERTICAL);
+        alarm_list_date.setGravity(Gravity.CENTER_VERTICAL);
+
+        params.bottomMargin=50;
+        view2.setLayoutParams(params);
         linearLayout.addView(view2);
     }
 }

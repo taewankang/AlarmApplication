@@ -159,6 +159,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
                 android:singleLine="true"
+                android:id="@+id/memo"
                 android:hint="알람 이름"/>
 <!--    밑에 버튼으로 바꾸기-->
             <RelativeLayout
