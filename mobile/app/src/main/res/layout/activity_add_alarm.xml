@@ -12,6 +12,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_marginTop="30dp"
+        android:layout_marginBottom="30dp"
         android:id="@+id/datePicker">
         <NumberPicker
             android:id="@+id/noon"

@@ -5,6 +5,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.media.Image;
 import android.os.Build;
 import android.os.Bundle;
@@ -29,13 +30,12 @@ public class AddAlarm extends AppCompatActivity {
     saturday_imageView, sunday_imageView;
     boolean[] day_arr = new boolean[7];
     LocalDate localDate = LocalDate.now();
-    int current_year;
-    int current_month;
-    int current_day;
-    TextView today;
+    int current_year, current_month, current_day;       //현재 년도, 달, 날
+    TextView today;     //캘린더 옆 문자열
     String today_text = "", selected_day_string = "";
-    String[] minute_arr =new String[60];
-    NumberPicker noon, hour, minute;
+    String[] minute_arr =new String[60];     //분에 들어갈 데이터
+    NumberPicker noon, hour, minute;        //NumberPicker에서 선택된 오전.후, 시간, 분
+    int inoon = 0, ihour = 1, iminute = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,6 +73,27 @@ public class AddAlarm extends AppCompatActivity {
         minute.setDisplayedValues(minute_arr);
         minute.setMinValue(0);
         minute.setMaxValue(59);
+
+        noon.setOnValueChangedListener(new NumberPicker.OnValueChangeListener(){
+            @Override
+            public void onValueChange(NumberPicker numberPicker, int old_value, int new_value) {
+                inoon = new_value;  //new_value는 NumberPicker의 인덱스 값(오전: 0, 오후: 1)
+            }
+        });
+
+        hour.setOnValueChangedListener(new NumberPicker.OnValueChangeListener(){
+            @Override
+            public void onValueChange(NumberPicker numberPicker, int old_value, int new_value) {
+                ihour = new_value;      //현재 시간보다 1작은 값으로 출력(인덱스 값이기 때문에)
+            }
+        });
+
+        minute.setOnValueChangedListener(new NumberPicker.OnValueChangeListener() {
+            @Override
+            public void onValueChange(NumberPicker numberPicker, int old_value, int new_value) {
+                iminute = new_value;    //분과 인덱스 값이 같음
+            }
+        });
         for(int i=0; i<7; i++)
             day_arr[i] = false;
     }
@@ -145,7 +166,12 @@ public class AddAlarm extends AppCompatActivity {
     }
 
     public void save(View view) {
-
+        Intent intent = new Intent();
+        intent.putExtra("noon", inoon);
+        intent.putExtra("hour", ihour);
+        intent.putExtra("minute", iminute);
+        setResult(RESULT_OK, intent);
+        finish();
     }
 
     public void selected_day(){
@@ -173,7 +199,6 @@ public class AddAlarm extends AppCompatActivity {
     }
 
     public void Dialog_calendar(View view) {
-
         DatePickerDialog datePickerDialog = new DatePickerDialog(this, new OnDateSetListener(){
             String date = "";
             @Override

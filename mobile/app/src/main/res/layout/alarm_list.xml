@@ -2,13 +2,13 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:background="@drawable/alarm_background"
-    android:layout_marginBottom="10dp"
+    android:padding="20dp"
     android:layout_height="60dp">
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_alignParentLeft="true"
-        android:text="Asd"
         android:gravity="center_vertical"
         android:textSize="20dp"
         android:id="@+id/noon"/>
@@ -19,15 +19,23 @@
         android:textSize="30dp"
         android:layout_toRightOf="@+id/noon"
         android:layout_marginLeft="10dp"
-        android:text="asd"
         android:gravity="center_vertical"
         android:id="@+id/time"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:layout_toLeftOf="@+id/date"
+        android:layout_toRightOf="@+id/time"
+        android:id="@+id/memo"/>
 
     <Switch
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_alignParentRight="true"
         android:id="@+id/alarm_switch"/>
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
@@ -35,5 +43,6 @@
         android:textSize="15dp"
         android:layout_toLeftOf="@+id/alarm_switch"
         android:layout_marginRight="10dp"
-        android:text="asd"/>
+        android:id="@+id/date"/>
+
 </RelativeLayout>

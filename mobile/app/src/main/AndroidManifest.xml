@@ -9,7 +9,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Picker"></activity>
         <activity android:name=".alarm.AddAlarm" />
         <activity
             android:name=".MainActivity"
