@@ -10,6 +10,7 @@ import android.media.Image;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -57,7 +58,6 @@ public class AddAlarm extends AppCompatActivity {
         today_text = "오늘-" + current_month + "월 " + current_day + "일";
         today.setText(today_text);
         memo = (EditText)findViewById(R.id.memo);
-
         noon = (NumberPicker)findViewById(R.id.noon);
         hour = (NumberPicker)findViewById(R.id.hour);
         minute = (NumberPicker)findViewById(R.id.minute);
@@ -211,7 +211,14 @@ public class AddAlarm extends AppCompatActivity {
                 date = (month + 1) + "월 " + day + "일 ";
                 today.setText(date);
             }
-        }, current_year, current_month, current_day);
+        }, current_year, current_month - 1, current_day);       //달의 인덱스는 0부터 시작하기 때문에 current_month- 1로 시작함
         datePickerDialog.show();
+    }
+
+    @Override
+    public void onBackPressed(){
+        Intent intent = new Intent();
+        setResult(RESULT_CANCELED, intent);
+        super.onBackPressed();
     }
 }

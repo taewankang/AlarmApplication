@@ -11,10 +11,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
 import androidx.fragment.app.Fragment;
+import com.example.mobile.AlarmManage;
 import com.example.mobile.R;
-
 import java.util.ArrayList;
 import java.util.List;
 import static android.view.View.GONE;
@@ -22,12 +21,15 @@ import static android.view.View.VISIBLE;
 import static android.view.View.inflate;
 
 public class Alarm extends Fragment {
+    private final int ADDALARM = 0;
+    private final int RESULT_OK = -1;
     Button add, more, alarm_add_button;
     TextView alarm_textView;
     LinearLayout add_button_linearLayout, linearLayout;
-    List<String> list = new ArrayList<>();
+    List<AlarmManage> list = new ArrayList<>();
     Context context;
     View view2;
+
     public View onCreateView(LayoutInflater inflate, ViewGroup container, Bundle savedinstanceState){
         View view = inflate.inflate(R.layout.alarm, container, false);
         add = (Button)view.findViewById(R.id.add);
@@ -66,34 +68,50 @@ public class Alarm extends Fragment {
     @Override
     public void onStart(){
         super.onStart();
-        view2 = getView();
+        for(AlarmManage alarmManage : list){
+            add_list(alarmManage.getNoon(), alarmManage.getHour(), alarmManage.getMin(), alarmManage.getMemo(), alarmManage.getDate());
+        }
         if(list.size() == 0){
             alarm_textView.setVisibility(GONE);
-//            add.setVisibility(GONE);
+            add.setVisibility(GONE);
+            add_button_linearLayout.setVisibility(VISIBLE);
         }else{
             add.setVisibility(VISIBLE);
-//            add_button_linearLayout.setVisibility(GONE);
+            add_button_linearLayout.setVisibility(GONE);
         }
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        if(list.size() != 0)
+            linearLayout.removeAllViews();
+    }
+
+    @Override
+    public void onDestroy(){
+        super.onDestroy();
     }
 
     public void addAlarm(){
         Intent intent = new Intent(getContext(), AddAlarm.class);
-        startActivityForResult(intent, 0);
+        startActivityForResult(intent, ADDALARM);
     }
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data){
         super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode == 0){
-            add_button_linearLayout.setVisibility(GONE);
-            add.setVisibility(VISIBLE);
-            int noon = data.getIntExtra("noon", 0);
-            int hour = data.getIntExtra("hour", 0);
-            int min = data.getIntExtra("minute", 0);
-            String memo = data.getStringExtra("memo");
-            String today = data.getStringExtra("today");
-            add_list(noon, hour, min, memo, today);
-            add.setVisibility(VISIBLE);
+        if(requestCode == ADDALARM){
+            if(resultCode == RESULT_OK) {
+                int noon = data.getIntExtra("noon", 0); //오전, 오후
+                int hour = data.getIntExtra("hour", 0) + 1; //시간 설정
+                int min = data.getIntExtra("minute", 0); //분 설정
+                String memo = data.getStringExtra("memo");          //memo 설정
+                String today = data.getStringExtra("today");        //선택 요일 / 날짜 설정
+
+                AlarmManage alarmManage = new AlarmManage(noon, hour, min, memo, today);
+                list.add(alarmManage);
+            }
         }
     }
 
