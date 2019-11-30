@@ -1,4 +1,4 @@
-package com.example.mobile;
+package com.example.mobile.alarm;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,6 +9,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+
+import com.example.mobile.R;
 
 import java.util.zip.Inflater;
 

@@ -10,7 +10,62 @@
         <item>3</item>
         <item>4</item>
         <item>5</item>
-
     </string-array>
 
+    <string-array name="continent">
+        <item>아시아</item>
+        <item>유럽</item>
+        <item>북아메리카</item>
+        <item>남아메리카</item>
+        <item>오세아니아</item>
+        <item>아프리카</item>
+    </string-array>
+
+    <string-array name="asia">
+        <item>서울</item>
+        <item>도쿄</item>
+        <item>베이징</item>
+        <item>홍콩</item>
+        <item>싱가포르</item>
+    </string-array>
+
+    <string-array name="oceania">
+        <item>시드니</item>
+        <item>퍼스</item>
+        <item>오클랜드</item>
+        <item>웰링턴</item>
+    </string-array>
+
+    <string-array name="europe">
+        <item>런던</item>
+        <item>리스본</item>
+        <item>파리</item>
+        <item>베를린</item>
+        <item>로마</item>
+        <item>이스탄불</item>
+        <item>모스크바</item>
+    </string-array>
+
+    <string-array name="africa">
+        <item>다카르</item>
+        <item>라구스</item>
+        <item>나이로비</item>
+        <item>케이프타운</item>
+    </string-array>
+
+    <string name="north_america">
+        <item>뉴욕</item>
+        <item>시카고</item>
+        <item>보스턴</item>
+        <item>오타와</item>
+        <item>토론토</item>
+        <item>샌프란시스코</item>
+        <item>로스앤젤레스</item>
+    </string>
+
+    <string name="south_america">
+        <item>부에노스아이레스</item>
+        <item>산티아고</item>
+        <item>브라질리아</item>
+    </string>
 </resources>

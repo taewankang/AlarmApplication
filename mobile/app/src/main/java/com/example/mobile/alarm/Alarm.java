@@ -2,6 +2,7 @@ package com.example.mobile.alarm;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
@@ -15,7 +16,9 @@ import androidx.fragment.app.Fragment;
 import com.example.mobile.AlarmManage;
 import com.example.mobile.R;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import static android.content.Context.MODE_PRIVATE;
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
 import static android.view.View.inflate;
@@ -29,6 +32,7 @@ public class Alarm extends Fragment {
     List<AlarmManage> list = new ArrayList<>();
     Context context;
     View view2;
+//    SharedPreferences sharedPreferences;
 
     public View onCreateView(LayoutInflater inflate, ViewGroup container, Bundle savedinstanceState){
         View view = inflate.inflate(R.layout.alarm, container, false);
@@ -39,6 +43,9 @@ public class Alarm extends Fragment {
         linearLayout = (LinearLayout)view.findViewById(R.id.linearlayout);
         alarm_add_button = (Button)view.findViewById(R.id.alarm_add_button);
         context = container.getContext();
+//        sharedPreferences = context.getSharedPreferences("Alarm", MODE_PRIVATE);
+//        SharedPreferences.Editor editor = sharedPreferences.edit();
+
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -51,7 +58,6 @@ public class Alarm extends Fragment {
             public void onClick(View view) {
                 AlertDialog.Builder alertDialog = new AlertDialog.Builder(getContext());
                 alertDialog.setMessage("삭제");
-                alertDialog.setMessage("추가");
                 alertDialog.show();
             }
         });
@@ -111,6 +117,7 @@ public class Alarm extends Fragment {
 
                 AlarmManage alarmManage = new AlarmManage(noon, hour, min, memo, today);
                 list.add(alarmManage);
+
             }
         }
     }
@@ -130,7 +137,6 @@ public class Alarm extends Fragment {
         alarm_list_time.setText(hour + " : " + min);
         alarm_list_memo.setText(memo);
         alarm_list_date.setText(date);
-
         alarm_list_time.setGravity(Gravity.CENTER_VERTICAL);
         alarm_list_noon.setGravity(Gravity.CENTER_VERTICAL);
         alarm_list_memo.setGravity(Gravity.CENTER_VERTICAL);
@@ -139,5 +145,20 @@ public class Alarm extends Fragment {
         params.bottomMargin=50;
         view2.setLayoutParams(params);
         linearLayout.addView(view2);
+        list.sort(new Comparator<AlarmManage>(){
+            @Override
+            public int compare(AlarmManage alarmManage1, AlarmManage alarmManage2){
+                if(alarmManage1.getLeftTime() < alarmManage2.getLeftTime())
+                    return 1;
+                else if(alarmManage1.getLeftTime() == alarmManage2.getLeftTime())
+                    return 0;
+                else
+                    return -1;
+            }
+        });
+    }
+
+    public void getLeftTime(){
+
     }
 }

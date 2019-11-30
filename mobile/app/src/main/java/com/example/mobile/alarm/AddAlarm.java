@@ -37,7 +37,7 @@ public class AddAlarm extends AppCompatActivity {
     String today_text = "", selected_day_string = "";
     String[] minute_arr =new String[60];     //분에 들어갈 데이터
     NumberPicker noon, hour, minute;        //NumberPicker에서 선택된 오전.후, 시간, 분
-    int inoon = 0, ihour = 1, iminute = 0;
+    int inoon = 0, ihour = 0, iminute = 0;
     EditText memo;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -213,6 +213,16 @@ public class AddAlarm extends AppCompatActivity {
             }
         }, current_year, current_month - 1, current_day);       //달의 인덱스는 0부터 시작하기 때문에 current_month- 1로 시작함
         datePickerDialog.show();
+        for(int i=0; i<7; i++)
+            day_arr[i] = false;
+        monday_imageView.setVisibility(View.GONE);
+        tuesday_imageView.setVisibility(View.GONE);
+        wednesday_imageView.setVisibility(View.GONE);
+        thursday_imageView.setVisibility(View.GONE);
+        friday_imageView.setVisibility(View.GONE);
+        saturday_imageView.setVisibility(View.GONE);
+        sunday_imageView.setVisibility(View.GONE);
+        today.setText(today_text);
     }
 
     @Override
