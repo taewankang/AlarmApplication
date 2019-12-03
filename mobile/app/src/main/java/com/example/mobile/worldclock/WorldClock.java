@@ -23,9 +23,9 @@ public class WorldClock extends Fragment {
     private static final int RESULT_OK = -1;
     private final int AddWorldClock = 1;
     TextView current_time_textView;
-    DateFormat hour_min = new SimpleDateFormat("HH:mm");
-    DateFormat noon = new SimpleDateFormat("a");
-    Button add;
+    DateFormat hour_min = new SimpleDateFormat("HH:mm");    //시, 분을 가짐
+    DateFormat noon = new SimpleDateFormat("a");            //오전, 오후 나뉨
+    Button add, add2;
     String time_string = "", noon_string = "";
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         View view = inflater.inflate(R.layout.world_clock, container, false);
@@ -33,15 +33,31 @@ public class WorldClock extends Fragment {
         time_string = hour_min.format(Calendar.getInstance().getTime());
         noon_string = noon.format(Calendar.getInstance().getTime());
         add = view.findViewById(R.id.add);
+        add2 = view.findViewById(R.id.add2);
         add.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getContext(), WorldClockSelect.class);
-                startActivityForResult(intent, AddWorldClock);
+            public void onClick(View view) {        //+버튼
+                intentFunc();
             }
         });
 
+        add2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {        //보라색 버튼
+                intentFunc();
+            }
+        });
         return view;
+    }
+
+    public void intentFunc(){
+        int hour  = Calendar.getInstance().get(Calendar.HOUR_OF_DAY);
+        int min = Calendar.getInstance().get(Calendar.MINUTE);
+        Intent intent = new Intent(getContext(), WorldClockSelect.class);
+        intent.putExtra("hour", hour);       //현재 시간을 보냄
+        intent.putExtra("min", min);
+        intent.putExtra("noon", noon_string);
+        startActivityForResult(intent, AddWorldClock);
     }
 
     @Override

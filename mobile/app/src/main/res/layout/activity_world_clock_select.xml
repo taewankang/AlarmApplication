@@ -40,6 +40,23 @@
         android:entries="@array/asia"
         android:layout_below="@+id/continent"/>
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginVertical="30dp"
+        android:layout_marginHorizontal="30dp"
+        android:layout_below="@+id/country"
+        android:layout_above="@+id/time"
+        android:id="@+id/imageView"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/finish"
+        android:layout_marginBottom="20dp"
+        android:textSize="20dp"
+        android:gravity="center"
+        android:id="@+id/time"/>
 
     <LinearLayout
         android:layout_width="match_parent"
